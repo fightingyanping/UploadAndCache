@@ -16,9 +16,9 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+@Slf4j
 @Configuration
 @PropertySource("classpath:/redis.properties")
-@Slf4j
 public class RedisConfiguration {
     private @Value("${redis.host}") String redisHost;
     private @Value("${redis.port}") int redisPort;
