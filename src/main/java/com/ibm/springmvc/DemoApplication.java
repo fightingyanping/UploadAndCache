@@ -8,9 +8,11 @@ import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomize
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableCaching
+@ComponentScan("com.ibm.springmvc")
 public class DemoApplication {
 
     public static void main(String[] args) throws Exception {
