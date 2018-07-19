@@ -19,7 +19,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @PropertySource("classpath:/redis.properties")
 @Slf4j
-public class CacheConfiguration {
+public class RedisConfiguration {
     private @Value("${redis.host}") String redisHost;
     private @Value("${redis.port}") int redisPort;
     

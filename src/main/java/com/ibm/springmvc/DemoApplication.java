@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableCaching
-@ComponentScan("com.ibm.springmvc")
+//@ComponentScan("com.ibm.springmvc")
 public class DemoApplication {
 
     public static void main(String[] args) throws Exception {
