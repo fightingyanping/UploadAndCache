@@ -1,4 +1,4 @@
-package com.ibm.springmvc.fileupload;
+package com.ibm.springmvc;
 
 import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.springframework.boot.SpringApplication;
@@ -8,10 +8,10 @@ import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletCon
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class FileuploadApplication {
+public class DemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FileuploadApplication.class, args);
+        SpringApplication.run(DemoApplication.class, args);
     }
     
     //Tomcat large file upload connection reset
