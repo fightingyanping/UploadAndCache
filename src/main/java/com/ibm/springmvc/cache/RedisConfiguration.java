@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCachePrefix;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
@@ -22,6 +23,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfiguration {
     private @Value("${redis.host}") String redisHost;
     private @Value("${redis.port}") int redisPort;
+    
+    @Value("${spring.cache.cachePrefix}")
+    private String cachePrefix;
+    
+    @Value("${spring.cache.defaultExpiration}")
+    private Long defaultExpiration;
     
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -45,7 +52,15 @@ public class RedisConfiguration {
      */
     @Bean
     public RedisCacheManager cacheManager() {
+        log.info(this.cachePrefix);
+        log.info(this.defaultExpiration.toString());
+        
         RedisCacheManager redisCacheManager = new RedisCacheManager(redisTemplate());
+        redisCacheManager.setUsePrefix(true);
+        RedisCachePrefix cachePrefix = new RedisPrefix(this.cachePrefix);
+        redisCacheManager.setCachePrefix(cachePrefix);
+        // 整体缓存过期时间
+        redisCacheManager.setDefaultExpiration(this.defaultExpiration);
         return redisCacheManager;
     }
     

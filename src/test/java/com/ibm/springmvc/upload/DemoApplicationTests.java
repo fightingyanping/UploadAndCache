@@ -1,4 +1,4 @@
-package com.ibm.springmvc.fileupload;
+package com.ibm.springmvc.upload;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
